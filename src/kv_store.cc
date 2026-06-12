@@ -4,18 +4,23 @@
 namespace mango {
 
 void KeyValStore::put(std::string key, std::string val) {
-	// TODO: 
-
+	store[key] = val;
 }
 
 std::string KeyValStore::get(std::string key) {
-	// TODO: 
-
+	auto it = store.find(key);
+	if (it != store.end()) {
+		return it->second;
+	}
 }
 
 bool KeyValStore::del(std::string key) {
-	// TODO: 
+	auto it = store.find(key);
+	if (it == store.end())
+		return false;
 
+	store.erase(it);
+	return true;
 }
 
 }
